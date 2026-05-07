@@ -55,6 +55,7 @@ of truth. Do not invent new design choices — surface the question to the user.
 
 - `app/` — Next.js App Router pages.
 - `app/(public)/` — public routes: `/`, `/world`, `/signin`, `/signup`, `/verify-email`.
+  `app/(public)/` is a route group for organization only. No per-group layout — the root layout handles nav, footer, and providers for everything.
 - `app/character/` — authenticated routes: `/character/create` and (later) `/character`.
 - `components/` — reusable React components.
 - `lib/supabase/` — Supabase client setup (browser client and server client).
