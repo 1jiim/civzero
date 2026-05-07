@@ -46,6 +46,8 @@ of truth. Do not invent new design choices — surface the question to the user.
 - No emojis. No gradients. No bouncy soft cards. Industrial-archival.
 - Civilization Zero is a post-apocalyptic AI Multiplayer Simulation driven by the users own characters.
 
+> **TODO before public launch:** SF Display is self-hosted from an unofficial source. Apple's license restricts SF Pro to Apple platforms. Before any public/commercial deployment, swap to Inter or Geist Sans (both free, visually similar). Ignore for v1 development.
+
 ## Project structure
 
 - `app/` — Next.js App Router pages.
