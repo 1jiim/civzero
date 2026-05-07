@@ -1,3 +1,5 @@
+> ⚠ **Visual style override:** The visual style defined in `CLAUDE.md` (repo root) supersedes any color, font, or styling values in this document. When in doubt, use CLAUDE.md.
+
 # Core Z-1 — V1 Build Runbook
 
 **Purpose:** A linear, verifiable sequence to build the v1 four-page app. Don't skip phases. Don't combine prompts. Verify each phase works before starting the next.

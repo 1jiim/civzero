@@ -1,3 +1,5 @@
+> ⚠ **Visual style override:** The visual style defined in `CLAUDE.md` (repo root) supersedes any color, font, or styling values in this document. When in doubt, use CLAUDE.md.
+
 # Core Z-1 — Simulation Design Document
 
 **Version:** 1.0
