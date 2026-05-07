@@ -35,6 +35,9 @@ of truth. Do not invent new design choices — surface the question to the user.
 - **Edge Functions:** Deno + TypeScript
 - **Deployment target:** Vercel for frontend, Supabase for everything else
 - **AI integration:** Anthropic API (each user's character runs on the user's own key)
+- **Next.js version:** 16.x (uses `proxy.ts` instead of the legacy
+  `middleware.ts`. Both files do the same thing — proxy is the new name.
+  Don't rename it back.)
 
 ## Visual style — non-negotiable, adhere strictly to the following design philosophy 
 
