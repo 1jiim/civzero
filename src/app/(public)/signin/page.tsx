@@ -16,26 +16,33 @@ export default function SignInPage() {
     e.preventDefault()
     setError(null)
     setSubmitting(true)
+    console.log('[signin] handleSubmit started')
 
-    const supabase = createClient()
-    const { error: authError, data } = await supabase.auth.signInWithPassword({ email, password })
+    try {
+      const supabase = createClient()
+      console.log('[signin] calling signInWithPassword...')
+      const { error: authError, data } = await supabase.auth.signInWithPassword({ email, password })
+      console.log('[signin] signInWithPassword returned — error:', authError?.message ?? 'none', '| session:', data.session ? 'present' : 'null', '| user:', data.user?.id ?? 'null')
 
-    if (authError) {
-      setError(authError.message)
+      if (authError) {
+        setError(authError.message)
+        return
+      }
+
+      if (!data.session) {
+        setError('Please confirm your email before signing in. Check your inbox.')
+        return
+      }
+
+      console.log('[signin] calling router.push /character/create')
+      // TODO: once Phase 9 (character dashboard) is built, query characters here and
+      // redirect to /character if one exists, /character/create if not.
+      router.push('/character/create')
+      console.log('[signin] router.push called')
+    } finally {
       setSubmitting(false)
-      return
+      console.log('[signin] setSubmitting(false) called')
     }
-
-    // Query directly here: useAuth().hasCharacter hasn't resolved yet at this point
-    // since onAuthStateChange fires asynchronously after sign-in completes.
-    const { data: character } = await supabase
-      .from('characters')
-      .select('id')
-      .eq('user_id', data.user.id)
-      .maybeSingle()
-
-    // TODO: /character is a placeholder until Phase 9 (character dashboard) is built
-    router.push(character ? '/character' : '/character/create')
   }
 
   return (

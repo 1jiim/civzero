@@ -3,6 +3,14 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useAuth } from '@/components/AuthProvider'
+import { createClient } from '@/lib/supabase/client'
+
+// DEV ONLY — remove before commit
+async function devSignOut() {
+  const supabase = createClient()
+  await supabase.auth.signOut()
+  window.location.href = '/'
+}
 
 export function Nav() {
   const { user, hasCharacter, characterName, loading } = useAuth()
@@ -40,17 +48,30 @@ export function Nav() {
                 Enter the City
               </Link>
             </>
-          ) : !hasCharacter ? (
-            <Link
-              href="/character/create"
-              className="text-sm px-4 py-1.5 bg-accent text-canvas hover:opacity-90 transition-opacity"
-            >
-              Create Character
-            </Link>
           ) : (
-            <Link href="/character" className="text-muted text-sm hover:text-primary transition-colors">
-              {characterName}
-            </Link>
+            <>
+              {!hasCharacter ? (
+                <Link
+                  href="/character/create"
+                  className="text-sm px-4 py-1.5 bg-accent text-canvas hover:opacity-90 transition-opacity"
+                >
+                  Create Character
+                </Link>
+              ) : (
+                <Link href="/character" className="text-muted text-sm hover:text-primary transition-colors">
+                  {characterName}
+                </Link>
+              )}
+              {/* DEV ONLY — remove before commit */}
+              {process.env.NODE_ENV === 'development' && (
+                <button
+                  onClick={devSignOut}
+                  className="text-xs text-muted border border-line px-2 py-1 hover:border-danger hover:text-danger transition-colors"
+                >
+                  [sign out]
+                </button>
+              )}
+            </>
           )}
 
           <button

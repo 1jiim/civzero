@@ -56,6 +56,11 @@ of truth. Do not invent new design choices — surface the question to the user.
 - `app/` — Next.js App Router pages.
 - `app/(public)/` — public routes: `/`, `/world`, `/signin`, `/signup`, `/verify-email`.
   `app/(public)/` is a route group for organization only. No per-group layout — the root layout handles nav, footer, and providers for everything.
+- `app/auth/confirm/` — Route Handler (`route.ts`) for Supabase email verification. Receives
+  `?token_hash=...&type=signup&next=/character/create` from the confirmation email link, calls
+  `supabase.auth.verifyOtp()` server-side to set the session cookie, then redirects to `next`.
+  Do not remove — this is the required `@supabase/ssr` email confirmation pattern. The
+  `emailRedirectTo` option in `signUp()` and `resend()` must point here.
 - `app/character/` — authenticated routes: `/character/create` and (later) `/character`.
 - `components/` — reusable React components.
 - `lib/supabase/` — Supabase client setup (browser client and server client).
