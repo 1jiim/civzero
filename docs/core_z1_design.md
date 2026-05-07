@@ -125,9 +125,13 @@ For each faction, the structured fields below are stored in the `factions` table
 
 ---
 
-## §3. Skill Pool (18 Skills)
+## §3. Skill Pool (38 Skills)
 
 The user picks **5** of these at character creation. Stored with a `proficiency` value `0.0–1.0`; default at creation is `0.6` for selected skills, `0.0` for unselected. Skills can be improved over time via `train_skill` actions and degrade only via the defection relearning period.
+
+The pool is intentionally broad. Ids 1–18 are the original "core" skills (combat, medicine, scavenging, intelligence). Ids 19–38 expand into traditional crafts, survival arts, and social specialties — reflecting that Core Z-1 is a city held together by makers and menders, not just fighters and spies.
+
+Skills are not faction-locked. Mismatch between skills and faction generates good character texture; the AI should lean into it rather than ignore it. A Vitalis Order member with Combat is a wartime medic. A Nullborn with Negotiation is dangerous. A Circuit Priest with Pottery is unusual — and worth a story.
 
 | # | Skill | Description |
 |---|---|---|
@@ -149,6 +153,26 @@ The user picks **5** of these at character creation. Stored with a `proficiency`
 | 16 | **Endurance** | Physical resilience, working through pain, surviving deprivation. |
 | 17 | **Survival** | Operating in dangerous environments — outside, contaminated zones, dark places. |
 | 18 | **Archival** | Organizing information, working with records, decoding, research. |
+| 19 | **Leatherworking** | Tanning hides, cutting and stitching leather goods, repairing straps and harnesses. |
+| 20 | **Tailoring** | Sewing, mending, and altering clothing; pattern work and textile repair. |
+| 21 | **Smithing** | Forging and shaping metal at the anvil — tools, blades, hinges, fittings. |
+| 22 | **Carpentry** | Working salvaged timber and reclaimed wood into furniture, frames, and joinery. |
+| 23 | **Masonry** | Cutting and laying stone, brick, and concrete; patching walls and foundations. |
+| 24 | **Plumbing** | Installing and repairing water lines, drains, pumps, and pressure systems. |
+| 25 | **Mechanics** | Maintaining engines, gearboxes, pumps, and mechanical assemblies under load. |
+| 26 | **Butchery** | Slaughtering and dressing animals, breaking down carcasses, curing and preserving cuts. |
+| 27 | **Brewing** | Fermenting alcohol, vinegar, and preserves; managing yeasts, mashes, and cultures. |
+| 28 | **Weaving** | Spinning fiber and weaving cloth on loom or frame; producing textiles from raw stock. |
+| 29 | **Pottery** | Shaping and firing clay into vessels, tiles, and crockery. |
+| 30 | **Husbandry** | Raising livestock and draft animals, controlling vermin, working trained beasts. |
+| 31 | **Cartography** | Mapping districts, tunnels, and routes; reading and producing accurate plans. |
+| 32 | **Tracking** | Following trails, marks, and sign; locating people or animals through corridors and ruins. |
+| 33 | **Climbing** | Scaling walls, scaffolds, and ruins; rigging ropes for vertical movement. |
+| 34 | **Forgery** | Producing false documents, ration cards, faction marks, and counterfeit goods. |
+| 35 | **Bureaucracy** | Navigating permits, regulations, faction paperwork, and official procedure. |
+| 36 | **Locksmithing** | Making, fitting, and defeating locks, latches, and basic security mechanisms. |
+| 37 | **Performance** | Music, storytelling, and public entertainment; holding a crowd, shaping mood. |
+| 38 | **Linguistics** | Reading pre-Collapse scripts, dead languages, and specialized technical jargon. |
 
 No skill is faction-locked. A Vitalis member with Combat is plausible (a wartime medic). A Nullborn with Negotiation is unusual but interesting. Mismatch between skills and faction generates good character texture; the AI should lean into it rather than ignore it.
 

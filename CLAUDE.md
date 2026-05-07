@@ -89,6 +89,21 @@ of truth. Do not invent new design choices — surface the question to the user.
 - Row-Level Security is enabled on every table. Policies are checked manually
   by the user before going live.
 
+## Skills system — current truth
+
+The `skills` table has **38 skills** (ids 1–38). Ids 1–18 are the original
+core skills from the design doc; ids 19–38 expand into traditional crafts
+(Smithing, Carpentry, Tailoring, Brewing, Pottery, Weaving, etc.), survival
+arts (Tracking, Climbing, Cartography, Husbandry), and social specialties
+(Bureaucracy, Forgery, Locksmithing, Performance, Linguistics).
+
+Users pick exactly **5** skills at character creation. This is enforced
+in the `create_character_with_skills` database function and must be
+matched by the character creation UI.
+
+If the design docs and the database disagree on skills, **the database
+is the source of truth**. Update the docs to match.
+
 ## Workflow rules for you, Claude Code
 
 - Before making any non-trivial change, briefly state what you intend to do.
@@ -135,3 +150,4 @@ The runbook's Phases 5-10 still need to be done. The order is:
 - Modify the Edge Function code.
 - Add new top-level routes.
 - Use any state management library beyond React's built-ins.
+
