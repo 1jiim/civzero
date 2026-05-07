@@ -11,7 +11,7 @@
 
 This document is split into **reference material** (sections you read for context, like the world bible and faction sheets) and **runtime material** (sections that get programmatically inserted into Claude API calls, like prompt templates and the JSON schema).
 
-When building in Lovable, you will:
+When building, you will:
 
 1. Paste the **World Bible** into the system prompt of every tick call.
 2. Paste the relevant **Faction Reference** snippet into the system prompt based on the character's faction.
@@ -578,7 +578,7 @@ These go in the `tools` parameter of the Anthropic API call. Use Anthropic tool 
 
 ## §9. Implementation Notes & Tuning
 
-A few practical notes before you start wiring this into Lovable.
+A few practical notes before you start:
 
 **Test the prompts manually first.** Before any UI, paste §1 + a §2 snippet + a synthetic character into the Anthropic console. Run 10 ticks by hand. If the narration is good, build. If it's repetitive or off-tone, fix the prompts here — no UI will rescue a broken simulation. This is the single most important step.
 

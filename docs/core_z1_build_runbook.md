@@ -14,12 +14,12 @@
 | 1 | Supabase project setup | Manual | 20 min |
 | 2 | Database schema | SQL | 30 min |
 | 3 | Database functions | SQL | 30 min |
-| 4 | Lovable project + basic auth | Lovable | 45 min |
-| 5 | Landing page | Lovable | 45 min |
-| 6 | Signup flow | Lovable | 60 min |
-| 7 | World view | Lovable | 60 min |
+| 4 | Project + basic auth | Claude Code | 45 min |
+| 5 | Landing page | Claude Code | 45 min |
+| 6 | Signup flow | Claude Code | 60 min |
+| 7 | World view | Claude Code | 60 min |
 | 8 | Edge function (manual) | Code | 90 min |
-| 9 | Character creation | Lovable + wiring | 90 min |
+| 9 | Character creation | Claude Code + wiring | 90 min |
 | 10 | End-to-end smoke test | Manual | 30 min |
 
 **Hard rule:** Each phase has a "Verify" section. Do not start the next phase until the verify checks pass. If they fail, fix the current phase first.
@@ -31,7 +31,7 @@
 **Before you start, you need:**
 
 1. **A Supabase account** — supabase.com, free tier is fine for v1.
-2. **A Lovable account** — lovable.dev, free tier is fine.
+2. **A Claude Code account** — Claude Code.dev, free tier is fine.
 3. **Your own Anthropic API key** for testing. You'll create a real character at the end and need to validate against a working key. Get one at console.anthropic.com/settings/keys.
 4. **A test email address** you can receive verification emails on.
 5. **Git** installed locally — you'll need it for editing the Edge Function.
@@ -40,7 +40,7 @@
 
 **Verify Phase 0:**
 - [ ] Run `supabase --version` in a terminal. It returns a version number.
-- [ ] You can log into supabase.com and lovable.dev.
+- [ ] You can log into supabase.com and Claude Code.dev.
 - [ ] You have a working Anthropic API key (test by calling the API with curl if you want to be sure).
 
 ---
@@ -61,8 +61,8 @@
    - "Enable Email provider" = ON
    - "Confirm email" = ON (this is the email-verification toggle from the spec)
 5. Go to **Authentication → URL Configuration**:
-   - Set "Site URL" to your eventual production URL, or for now use `http://localhost:3000` (we'll update later when Lovable gives you a deploy URL).
-   - Add redirect URLs: `http://localhost:3000/character/create` and your Lovable preview URL once you have one.
+   - Set "Site URL" to your eventual production URL, or for now use `http://localhost:3000` (we'll update later when Claude Code gives you a deploy URL).
+   - Add redirect URLs: `http://localhost:3000/character/create` and your Claude Code preview URL once you have one.
 6. Go to **Database → Extensions** and ensure **`pgsodium`** is enabled. Vault depends on it. It's usually on by default — verify.
 7. Go to **Database → Vault**. You should see an empty secrets list. Vault should be initialized and ready.
 
@@ -462,21 +462,21 @@ select proname from pg_proc where proname in ('create_anthropic_secret', 'create
 
 ---
 
-## Phase 4 — Lovable Project + Basic Auth
+## Phase 4 — Claude Code Project + Basic Auth
 
-**Goal:** A new Lovable project connected to Supabase, with a working sign-in page.
+**Goal:** A new Claude Code project connected to Supabase, with a working sign-in page.
 
 ### 4.1 Create the Project
 
-1. Go to lovable.dev → **New Project**.
+1. Go to Claude Code.dev → **New Project**.
 2. Name it `core-z1`.
 3. After it provisions, go to project settings and add the Supabase integration.
    - Paste your **Project URL** and **anon public key** (NOT the service_role key — never).
-4. Lovable should set up the `@supabase/supabase-js` client automatically.
+4. Claude Code should set up the `@supabase/supabase-js` client automatically.
 
-### 4.2 Lovable Prompt 1 — Foundation + Auth
+### 4.2 Claude Code Prompt 1 — Foundation + Auth
 
-**Paste this into Lovable:**
+**Paste this into Claude Code:**
 
 ```
 Set up the foundation for Core Z-1, a post-apocalyptic character
@@ -528,19 +528,19 @@ Make the layout responsive. On mobile, the nav center links collapse into a hamb
 
 ### 4.3 Verify Phase 4
 
-After Lovable runs the prompt:
+After Claude Code runs the prompt:
 
-- [ ] Open the Lovable preview. The app loads.
+- [ ] Open the Claude Code preview. The app loads.
 - [ ] The top nav and footer render with the correct dark colors.
 - [ ] Click "Sign In" — go to `/signin`.
 - [ ] In Supabase dashboard, manually create a user (Authentication → Users → Add user → manual sign-up with email + password, mark as email-confirmed).
 - [ ] In the app, sign in with that user. You're redirected somewhere reasonable (likely `/`).
 - [ ] The nav now shows "Create Character" instead of "Sign In".
-- [ ] Sign out (you may need to add a sign-out option somewhere — if Lovable didn't include one, ask it to in a follow-up).
+- [ ] Sign out (you may need to add a sign-out option somewhere — if Claude Code didn't include one, ask it to in a follow-up).
 
 **Common issues:**
-- *Auth state isn't updating after sign-in.* The `onAuthStateChange` listener is missing. Tell Lovable: "The nav doesn't update after sign-in. Make sure you're subscribed to `supabase.auth.onAuthStateChange` and updating React state."
-- *Supabase env vars not set.* Lovable normally handles this via the integration UI, but check that `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (or equivalent) are set.
+- *Auth state isn't updating after sign-in.* The `onAuthStateChange` listener is missing. Tell Claude Code: "The nav doesn't update after sign-in. Make sure you're subscribed to `supabase.auth.onAuthStateChange` and updating React state."
+- *Supabase env vars not set.* Claude Code normally handles this via the integration UI, but check that `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (or equivalent) are set.
 
 ---
 
@@ -548,7 +548,7 @@ After Lovable runs the prompt:
 
 **Goal:** The full landing page at `/` is built and styled.
 
-### 5.1 Lovable Prompt 2 — Landing Page
+### 5.1 Claude Code Prompt 2 — Landing Page
 
 **Paste:**
 
@@ -647,7 +647,7 @@ Before the prompt, configure the email Supabase sends:
    ```
 3. Save.
 
-### 6.2 Lovable Prompt 3 — Signup + Verify Email
+### 6.2 Claude Code Prompt 3 — Signup + Verify Email
 
 **Paste:**
 
@@ -724,8 +724,8 @@ Then test failure cases:
 
 **Common issues:**
 - *Email never arrives.* Check spam. Check Supabase logs (Auth → Logs). The free tier has rate limits — if you've signed up many times during testing, you may be throttled.
-- *The link in the email goes to localhost or the wrong URL.* Fix the redirect URL in Supabase Auth → URL Configuration. Add your Lovable preview URL.
-- *After clicking the email link, the user lands on the home page instead of `/character/create`.* The `emailRedirectTo` option wasn't set in `signUp()`. Have Lovable check.
+- *The link in the email goes to localhost or the wrong URL.* Fix the redirect URL in Supabase Auth → URL Configuration. Add your Claude Code preview URL.
+- *After clicking the email link, the user lands on the home page instead of `/character/create`.* The `emailRedirectTo` option wasn't set in `signUp()`. Have Claude Code check.
 
 ---
 
@@ -733,7 +733,7 @@ Then test failure cases:
 
 **Goal:** The public world view at `/world` is built. It will be empty (no characters yet), and that's correct — verify the empty state works.
 
-### 7.1 Lovable Prompt 4 — World View
+### 7.1 Claude Code Prompt 4 — World View
 
 **Paste:**
 
@@ -841,7 +841,7 @@ This is the security boundary of the entire app. Take your time.
 
 ### 8.1 Initialize Supabase Locally
 
-In a terminal, in a folder where you want to keep the function code (this can be separate from the Lovable project):
+In a terminal, in a folder where you want to keep the function code (this can be separate from the Claude Code project):
 
 ```bash
 mkdir core-z1-functions
@@ -1167,7 +1167,7 @@ delete from vault.secrets where name like 'anthropic-key-%';
 
 **Goal:** The 5-step character creation form at `/character/create`, wired to the Edge Function.
 
-### 9.1 Lovable Prompt 5 — Character Creation
+### 9.1 Claude Code Prompt 5 — Character Creation
 
 **Paste:**
 
@@ -1346,7 +1346,7 @@ This is the big end-to-end test. Use a fresh user (sign up a new one, verify the
 
 **Common issues:**
 - *Edge function returns 401.* The JWT isn't being sent. Check the Authorization header in the network tab.
-- *Edge function returns CORS error.* Lovable may need to be told the function is hosted on a different origin and to allow it. Verify the corsHeaders in the function code.
+- *Edge function returns CORS error.* Claude Code may need to be told the function is hosted on a different origin and to allow it. Verify the corsHeaders in the function code.
 - *Character creates but world view doesn't show it.* Polling interval is 30s — wait, or refresh. If still nothing, the world view query is wrong.
 
 ---
@@ -1392,7 +1392,7 @@ That's the next document: the **tick engine**. When you're ready, come back and 
 
 - **The faction `current_population_count` will drift.** Every character creation increments it; nothing decrements it on character deletion in v1. Add a nightly recount job when you build the tick engine.
 - **Vault secrets accumulate** — if a user deletes their account, their vault secret is orphaned. Eventually you'll want a cleanup job here too.
-- **Lovable will sometimes regenerate code in ways that break your wiring** — particularly the Edge Function call. After every Lovable session, smoke-test character creation with a fresh user.
+- **Claude Code will sometimes regenerate code in ways that break your wiring** — particularly the Edge Function call. After every Claude Code session, smoke-test character creation with a fresh user.
 - **Your Supabase free tier has limits.** Watch the dashboard. Database row count, auth users, function invocations — all metered.
 
 ---

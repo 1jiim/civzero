@@ -5,7 +5,7 @@
 **Scope:** Landing page, public world view, signup, and character creation.
 **What this is not:** the personal character dashboard (where a logged-in user views their own character's life). That comes after these four are working.
 
-This document is the source of truth for the four pages. Each section has: purpose, layout, copy, data, and a Lovable prompt at the end you can paste directly.
+This document is the source of truth for the four pages. Each section has: purpose, layout, copy, data, and a prompt at the end you can paste directly.
 
 ---
 
@@ -14,7 +14,7 @@ This document is the source of truth for the four pages. Each section has: purpo
 - World view is **public** — anyone can browse, no signup needed.
 - World view is organized with **tabs** — by location, by faction, recent activity feed.
 - **Email verification required** before character creation.
-- Stack: Lovable's default — React, Tailwind, Supabase (Auth + Postgres + RLS).
+- Stack: React, Tailwind, Supabase (Auth + Postgres + RLS).
 - Tone of all copy: tense, weighted, never marketing-fluffy. Match the world bible.
 - The map / 2D world is deferred to v2.
 
@@ -190,7 +190,7 @@ insert into factions (id, name, slug, ideology, description, color_hex) values
    'They handle waste, corpses, and the most dangerous environments. They endure what no one else will.','#3a3a3a');
 ```
 
-Sub-groups, skills, and locations seed data — see Lovable prompt §7 for the directive to populate from the design doc; data itself lives in the design doc you already have.
+Sub-groups, skills, and locations seed data — see prompt §7 for the directive to populate from the design doc; data itself lives in the design doc you already have.
 
 ### 2.4 Row-Level Security
 
@@ -288,7 +288,7 @@ Centered, more breathing room than the hero.
 - Headline: "Ten factions. One wall. Your person."
 - Single button: `Enter the City` → `/signup`
 
-### 3.2 Lovable Prompt for the Landing Page
+### 3.2 Prompt for the Landing Page
 
 ```
 Build the landing page at route "/" for Core Z-1, a post-apocalyptic
@@ -478,7 +478,7 @@ For v1 do **polling**, not realtime websockets. Refetch the active query every 3
 
 Realtime via Supabase channels is a v1.5 upgrade; polling lets you ship without subscription edge cases.
 
-### 4.6 Lovable Prompt for the World View
+### 4.6 Prompt for the World View
 
 ```
 Build the World View page at route "/world" for Core Z-1.
@@ -610,7 +610,7 @@ Centered, single-card layout. Plain text content:
 
 If the user is already authenticated and verified when they hit this page, redirect to `/character/create` immediately.
 
-### 5.5 Lovable Prompt for Signup + Verify Email
+### 5.5 Prompt for Signup + Verify Email
 
 ```
 Build the signup flow for Core Z-1 with two pages.
@@ -829,11 +829,10 @@ On submit:
 
 If anything fails: show the error inline on step 5, don't lose the user's other data.
 
-### 6.7 Edge Function Outline (for Lovable to scaffold)
+### 6.7 Edge Function Outline
 
 ```ts
 // supabase/functions/validate-and-create-character/index.ts
-// (sketch — Lovable will fill in details)
 
 serve(async (req) => {
   // 1. Authenticate the requesting user via the Supabase client
@@ -859,7 +858,7 @@ serve(async (req) => {
 
 The Vault integration is the security-critical part. The frontend never stores the key after submitting it to the function. The function itself doesn't log it.
 
-### 6.8 Lovable Prompt for Character Creation
+### 6.8 Prompt for Character Creation
 
 ```
 Build a 5-step character creation flow at route "/character/create" for
@@ -1041,7 +1040,7 @@ Don't build all four pages in parallel. The right order is:
 5. **Character creation.** This is the most complex page; build it last. Test it end-to-end with a real Anthropic key in dev.
 6. **Re-test the whole flow** as a fresh user, on mobile and desktop.
 
-Don't move on from one to the next until the previous one works. Lovable will tempt you to build everything at once — resist, because debugging four broken pages is much harder than debugging one.
+Don't move on from one to the next until the previous one works. Dont build everything at once — resist, because debugging four broken pages is much harder than debugging one.
 
 ---
 
