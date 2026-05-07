@@ -569,7 +569,7 @@ Five sections, scrolling vertically:
      Watch who they become. They will not wait for you."
    - Two centered buttons: primary amber "Enter the City" → /signup,
      secondary ghost "Watch the World" → /world.
-   - Below the buttons in tiny gray italic: "You don't play them.
+   - Below the buttons in tiny gray: "You don't play them.
      You created them. The rest is theirs to decide."
 
 2. Concept section:
@@ -761,7 +761,7 @@ TAB "By District":
 - Query characters with locations joined, where status not in
   ('dead', 'dormant'). Group results client-side by locations.district.
 - For each district, render a section: district name in slab-serif
-  with a thin underline, district description in italic gray, count
+  with a thin underline, district description in gray, count
   "(N citizens)".
 - Below the header, character cards in a 2-column grid on desktop,
   1-column on mobile.
@@ -774,7 +774,7 @@ TAB "By Faction":
 - Same query, grouped by faction_id client-side.
 - Each faction section header: 4px colored left border in the
   faction's color_hex. Faction name in slab-serif. One-line ideology
-  in gray italic. Population count to the right.
+  in gray. Population count to the right.
 - Cards in the same 2-column grid.
 - If a faction has zero characters, do not render it.
 
@@ -786,7 +786,7 @@ TAB "Recent":
   join subgroups sg on sg.id=c.subgroup_id order by e.created_at desc limit 50.
 - Render each event as a row, not a card:
     - Left: character name in bold; small gray "{faction name} — {subgroup name}".
-    - Center: narration text, italic, max 2 lines clamped, with a "more"
+    - Center: narration text,  , max 2 lines clamped, with a "more"
       toggle to expand to full text.
     - Right: time-ago string and location name.
 - "Load more" button at the bottom that fetches the next 50 events.
@@ -797,9 +797,9 @@ Character card component (used in district and faction tabs):
 - Top row: character name (bold, white) on left; faction sigil (just
   the faction's first letter inside a small colored circle) on right.
 - Second row: "{Faction name} — {Subgroup name}" in small gray text.
-- Latest narration text, italic gray, 2-line clamp. Pull from a
+- Latest narration text,   gray, 2-line clamp. Pull from a
   subquery: most recent event for this character. If no events,
-  render "Newly arrived in Core Z-1." in italic.
+  render "Newly arrived in Core Z-1." in  .
 - Bottom row: status chip (green for active, amber for injured, blue
   for hospitalized, gray for dormant, red for critical, purple for
   missing), dot separator, time-ago of latest event.
@@ -1207,7 +1207,7 @@ STEP 1 — IDENTITY
       Whatever fits who they are."
     - Core traits (textarea, max 50 words, live word count). Prompt:
       "Who are they at their core? Describe their temperament and
-      outlook." Hint in smaller gray italic: 'e.g. "Quiet. Watchful.
+      outlook." Hint in smaller gray  : 'e.g. "Quiet. Watchful.
       Trusts slowly. Speaks in short sentences and is uncomfortable
       when others won''t."'
     - Values (textarea, max 30 words, live count). Prompt: "What
@@ -1271,7 +1271,7 @@ STEP 4 — CONFIRMATION + SUB-GROUP REVEAL
     - Three personality blocks labeled "Core traits", "Values",
       "Flaw or fear" with the user's text below each
     - Selected faction with color bar and name
-    - Sub-group placeholder line in italic gray: "The city will
+    - Sub-group placeholder line in   gray: "The city will
       decide your role inside the {Faction Name}."
     - Five skill chips horizontally
 - Bottom buttons: "Back" and "Receive your assignment" (primary amber).
@@ -1282,7 +1282,7 @@ When "Receive your assignment" is clicked:
   table. Pick one randomly client-side.
 - Replace the placeholder line with a fade-in transition:
     Bold (white): "The city has placed you."
-    Italic (gray): "You are a {subgroup name} of the {faction name} —
+      (gray): "You are a {subgroup name} of the {faction name} —
       {subgroup description}."
 - Bottom buttons change to: small gray "Reroll" link on the left,
   primary amber "Continue" on the right.

@@ -242,8 +242,8 @@ Single-column, scroll-driven. Five sections stacked.
 
 - Full viewport height.
 - Centered, dark backdrop, single muted accent line at the top.
-- Eyebrow text (small, uppercase, amber): `THE LAST CITY`
-- Headline (large, slab-serif): **"Core Z-1 endures."**
+- Eyebrow text (small, uppercase, white): `THE LAST CITY`
+- Headline (large): **"Core Z-1 endures."**
 - Sub-headline (gray): "Create a person inside the last city. Watch who they become. They will not wait for you."
 - Two buttons centered:
   - Primary: `Enter the City` → `/signup`
@@ -294,41 +294,37 @@ Centered, more breathing room than the hero.
 Build the landing page at route "/" for Core Z-1, a post-apocalyptic
 character simulation app.
 
-Visual style: dark mode by default, near-black background (#0a0a0b),
-surfaces at #16171a, off-white text (#e8e8e8), muted gray secondary
-text (#9a9a9d), single accent color "cold amber" #c19a4b used sparingly.
-Typography: sans-serif body (Inter or similar), slab-serif or condensed
-sans for headings (something like "Roboto Slab" or "Oswald") to evoke
-official records. No emojis. No gradients. No rounded soft cards. The
-aesthetic is dystopian-industrial — think official archival documents
-in a city under rationing.
+- **Color palette.** Dystopian-industrial, not bright. Default to dark mode.
+- Dark mode only. Background `#050505`, surfaces `#212121`, borders `#2F3030`.
+- Primary text `#F0F0F0`, secondary `#C2C2C2`.
+- Single accent color: Cloud Blue `#A3C6D6`. Used sparingly.
+- Faction colors: 10 muted hues (defined in §2.3)
+- **Typography.** SF Display for body (available here https://github.com/sahibjotsaggu/San-Francisco-Pro-Fonts), Mozilla Headline (https://fonts.google.com/specimen/Mozilla+Headline) for headings to feel official-archival.
+- **No emojis. No gradients. No rounded marketing-card aesthetics.** This is a city with rationed power, not a SaaS, marketing or company product. It's a AI Civilization Simulation
 
-Top nav: left has wordmark "CORE Z-1" in slab-serif. Center has links
+Top nav: left has wordmark "Civilization Zero". Center has links
 "World" and "About". Right has a "Sign In" text link and "Enter the City"
-amber outlined button. Nav is sticky on scroll, with a subtle bottom
+Cloud Blue outlined button. Nav is sticky on scroll, with a subtle bottom
 border.
 
 Footer: dark, three columns, small text. Left column has the wordmark
 and tagline "The last city." Middle has placeholder links for Terms
-and Privacy. Right has "v1.0 — Core Z-1 endures."
+and Privacy. Right has "Civ0 | v 1.0"
 
 Page sections (vertical scroll):
 
 1. Hero: full viewport height. Centered. Eyebrow text "THE LAST CITY"
-   in small uppercase amber. Headline "Core Z-1 endures." in large
-   slab-serif. Subheadline in gray: "Create a person inside the last
+   in small uppercase Cloud Blue. Headline "Civilization Zero" in large. Subheadline in gray: "Create a person inside the last
    city. Watch who they become. They will not wait for you." Two
-   buttons centered: primary amber "Enter the City" links to /signup,
+   buttons centered: primary Cloud Blue "Enter the City" links to /signup,
    secondary ghost "Watch the World" links to /world. Below buttons
-   in tiny gray italic: "You don't play them. You created them. The
+   in tiny gray: "You don't play them. You created them. The
    rest is theirs to decide."
 
 2. Concept section, padded vertical space. Heading "WHAT THIS IS" in
-   small uppercase amber, left-aligned. Below, three columns (stacks
+   small uppercase Cloud Blue, left-aligned. Below, three columns (stacks
    on mobile under 768px) with these labels and paragraphs:
-   - "A SIMULATION" / "Each person you create lives autonomously inside
-     Core Z-1. They eat, work, fail, succeed, form relationships, and
-     sometimes die. You will not control them."
+   - "A SIMULATION" / "Each person you create lives autonomously inside Core Z-1. They eat, work, fail, succeed, form elationships, and yes, they can die. You will not control them."
    - "A SHARED CITY" / "Every person in the world is someone else's.
      The market is full of strangers. Your character may help them,
      fight them, or never meet them at all."
@@ -336,9 +332,9 @@ Page sections (vertical scroll):
      refusing to fall. Choose where your person serves. The faction
      will shape who they become."
 
-3. How it works section. Heading "HOW IT WORKS" small uppercase amber.
+3. How it works section. Heading "HOW IT WORKS" small uppercase Cloud Blue.
    Below, four numbered items vertically stacked with the number in
-   amber slab-serif large to the left and the text to the right:
+   white to the left and the text to the right:
    1. "Create a person." / "Name, faction, five skills, a personality."
    2. "Provide your Anthropic API key." / "This is what gives them
       life. Stored encrypted."
@@ -348,7 +344,7 @@ Page sections (vertical scroll):
       waiting."
 
 4. Stakes section, slightly inset surface color. Heading "THIS IS NOT
-   A GAME" small uppercase amber. Two paragraphs of body copy:
+   A GAME" small uppercase Cloud Blue. Two paragraphs of body copy:
    "There are no respawns. If your person dies — in a riot, in a
    contaminated zone, on the wrong end of a Veilbound interrogation
    — they are gone. Their story ends. You may create another, but
@@ -358,7 +354,7 @@ Page sections (vertical scroll):
 
 5. CTA footer section, centered, generous padding.
    Headline: "Ten factions. One wall. Your person."
-   Single primary amber button: "Enter the City" links to /signup.
+   Single primary Cloud Blue button: "Enter the City" links to /signup.
 
 Make the page responsive. On mobile, hero text scales down, columns
 stack vertically. No carousels, no parallax, no animations beyond
@@ -387,8 +383,8 @@ Single page with a fixed top section and a tabbed content area below.
 
 A vertical list of districts. Each district is a section with:
 
-- District name (slab-serif, with subtle underline)
-- District description (one line, gray, italic)
+- District name (, with subtle underline)
+- District description (one line, gray)
 - Count of active characters there
 - Card grid (2 columns desktop, 1 column mobile) of character cards in that district
 - "View all (N)" link if more than 6 characters in district — collapses to first 6 by default
@@ -431,8 +427,8 @@ Reused across district and faction tabs. Layout:
 
 - Name: bold, primary text color.
 - Faction + sub-group: small gray text.
-- Latest narration: italic, gray, 2-line clamp. Plain text only.
-- Status badge: colored chip — green for active, amber for injured, gray for dormant, blue for hospitalized, etc.
+- Latest narration: gray, 2-line clamp. Plain text only.
+- Status badge: colored chip — green for active, Cloud Blue for injured, gray for dormant, blue for hospitalized, etc.
 - Click anywhere on card → opens a side drawer with the character's full last 10 events. (Drawer, not page navigation, so the world list state isn't lost.)
 
 ### 4.3 Empty States
@@ -484,11 +480,10 @@ Realtime via Supabase channels is a v1.5 upgrade; polling lets you ship without 
 Build the World View page at route "/world" for Core Z-1.
 
 This page is public — viewable without login. Use the same color
-palette and typography as the landing page (dark mode default, amber
-accent #c19a4b, slab-serif headings, sans-serif body).
+palette and typography as the landing page (dark mode default, white headings, sans-serif body).
 
 Page header section:
-- Title "Core Z-1 — Live" in slab-serif large.
+- Title "Core Z-1 • Live" in  large.
 - Subtitle showing "{count} active citizens. Last tick {time-ago}."
   Pull these from Supabase: count from a query selecting characters
   where status not in ('dead', 'dormant'); last tick from max(created_at)
@@ -503,28 +498,28 @@ TAB "By District":
 - Query the characters table (with locations joined) for all characters
   where status not in ('dead', 'dormant'). Group results client-side by
   the location's district field.
-- For each district, render a section: district name in slab-serif with
-  a thin underline, district description in italic gray below, then the
+- For each district, render a section: district name in  with
+  a thin underline, district description in gray below, then the
   count "(N citizens)".
 - Below the header, render character cards in a 2-column grid on desktop,
   1-column on mobile.
 - If a district has more than 6 characters, only show 6 with a "View all
   (N)" expand link at the bottom of the section.
 - If no characters are in a district, render the district header anyway
-  with a muted italic line "This district is empty."
+  with a muted line "This district is empty."
 
 TAB "By Faction":
 - Same data, grouped by faction_id.
 - Each faction section header has a 4px colored left border in the
-  faction's color_hex from the factions table. Faction name in slab-serif,
-  one-line ideology in gray italic below, population count to the right.
+  faction's color_hex from the factions table. Faction name in ,
+  one-line ideology in gray below, population count to the right.
 - Below the header, character cards in the same 2-column grid.
 
-TAB "Recent":
+TAB "Recent Events":
 - Query the events table joined with characters, ordered by events.created_at
   desc. Limit 50 initially. Render each event as a row, not a card:
     - Left: character name in bold, sub-text "{faction name} — {subgroup name}"
-    - Center: narration text, italic, max 2 lines clamped with a "more" toggle.
+    - Center: narration text, max 2 lines clamped with a "more" toggle.
     - Right: time-ago string and location name.
 - At the bottom, a "Load more" button that fetches the next 50.
 
@@ -534,10 +529,10 @@ Character card component (used in district and faction tabs):
 - Top row: character name (bold, white) on the left; small faction sigil
   (just the faction's first letter in a colored circle for now) on the right.
 - Second row: "{Faction name} — {Subgroup name}" in small gray text.
-- Below that: latest narration text, italic gray, 2-line clamp. Pull this
+- Below that: latest narration text, gray, 2-line clamp. Pull this
   from a subquery: most recent event narration for this character. If the
-  character has no events yet, render "Newly arrived in Core Z-1." in italic.
-- Bottom row: a status chip on the left (green "active", amber "injured",
+  character has no events yet, render "Newly arrived in Core Z-1.".
+- Bottom row: a status chip on the left (green "active", orange "injured",
   blue "hospitalized", gray "dormant", red "critical", purple "missing"),
   a dot separator, and time-ago of latest event on the right.
 - Hovering the card slightly lightens the background. Clicking it opens
@@ -549,7 +544,7 @@ Polling: every 30 seconds, refetch the active tab's data. Show a tiny
 
 Empty state: if the world has zero active characters, replace the tab
 area with a centered quiet message "Core Z-1 is silent. No one walks
-the streets. Be the first." and an "Enter the City" amber button below
+the streets. Be the first." and an "Enter the City" Cloud Blue button below
 linking to /signup.
 
 Make the page responsive. On mobile, the tab control may collapse to a
@@ -584,7 +579,7 @@ Single centered card on a dark background. ~400px wide.
   - Email (text input, validates as email)
   - Password (8 char minimum, basic strength hint)
   - Confirm password (must match)
-- Submit button: `Submit Application` (primary amber)
+- Submit button: `Submit Application` (primary Cloud Blue)
 - Below the button: "Already a citizen? Sign in." → `/signin`
 - Below that, very small: "By applying, you agree to the Terms and Privacy Policy." (placeholder links)
 
@@ -616,23 +611,23 @@ If the user is already authenticated and verified when they hit this page, redir
 Build the signup flow for Core Z-1 with two pages.
 
 Use the same dark mode, dystopian-industrial visual style as the landing
-page (background #0a0a0b, surface #16171a, off-white text, amber accent
-#c19a4b, slab-serif headings, sans-serif body, no emojis or gradients).
+page (background #0a0a0b, surface #16171a, off-white text, Cloud Blue accent
+#c19a4b,  headings, sans-serif body, no emojis or gradients).
 
 Page 1 — Signup at route "/signup":
 - Public, no auth required.
 - Single centered card, about 400px wide, surface color background, 1px
   border (#2a2c30), 32px padding, on a dark page background.
-- At the top of the card: small uppercase amber text "ENTRY PROTOCOL".
-- Below: heading in slab-serif "Apply for citizenship."
+- At the top of the card: small uppercase Cloud Blue text "ENTRY PROTOCOL".
+- Below: heading in  "Apply for citizenship."
 - Below: small gray subtext "Core Z-1 verifies all new arrivals."
 - Form with three labeled inputs stacked:
     - Email (type email)
     - Password (type password) with helper text "At least 8 characters,
       including one number."
     - Confirm password (type password)
-- All inputs have a dark surface, 1px border, focus state with amber border.
-- Below the inputs: a primary amber button "Submit Application" full width.
+- All inputs have a dark surface, 1px border, focus state with Cloud Blue border.
+- Below the inputs: a primary Cloud Blue button "Submit Application" full width.
 - Below the button: small gray text "Already a citizen? Sign in." with
   "Sign in." as a link to /signin.
 - At the bottom of the card, very small gray text: "By applying, you agree
@@ -689,7 +684,7 @@ Long single forms cause abandonment. Split into 5 short steps with a progress in
 4. **Confirmation** — review everything, see assigned sub-group
 5. **API key** — paste, validate, store
 
-A persistent header shows: `Step {N} of 5 — {Step Name}` and a thin amber progress bar.
+A persistent header shows: `Step {N} of 5 — {Step Name}` and a thin Cloud Blue progress bar.
 
 A persistent footer shows `Back` (disabled on step 1) and `Continue` / `Confirm` (right-aligned). All steps validate before allowing `Continue`.
 
@@ -725,12 +720,12 @@ Layout: a grid of 10 faction cards, 2 columns on desktop, 1 on mobile.
 Each faction card:
 
 - 4px left border in faction color
-- Faction name (slab-serif)
-- Ideology (one line in amber: e.g. "Order & Force")
+- Faction name ()
+- Ideology (one line in Cloud Blue: e.g. "Order & Force")
 - Description (one paragraph, gray)
 - Population indicator at the bottom right: "{N} citizens" — colored gray normally, colored red if this faction is more than 40% above the population of the smallest faction.
 
-Selection: clicking a card highlights it (border becomes solid amber, surface lightens). Only one selectable.
+Selection: clicking a card highlights it (border becomes solid Cloud Blue, surface lightens). Only one selectable.
 
 **The recommendation logic:**
 
@@ -760,7 +755,7 @@ Layout: a grid of 18 skill chips. Each chip:
 - Click toggles selection
 - Counter at the top right of the section: "{N} / 5 selected"
 
-Visually, selected chips have an amber border and background tint.
+Visually, selected chips have an Cloud Blue border and background tint.
 
 Validation: must be exactly 5 selected before `Continue` enables.
 
@@ -783,7 +778,7 @@ Layout: a single review card showing all the choices.
 
 Two buttons at the bottom:
 - `Back` — return to step 3
-- `Receive your assignment` (primary amber) — triggers the sub-group reveal
+- `Receive your assignment` (primary Cloud Blue) — triggers the sub-group reveal
 
 When clicked: sub-group is randomly chosen client-side from the four sub-groups of the chosen faction. Show a brief 1-second loading state ("Assigning..."), then the placeholder line transforms with a fade-in:
 
@@ -795,7 +790,7 @@ When clicked: sub-group is randomly chosen client-side from the four sub-groups 
 
 After the reveal, the bottom buttons change to:
 - `Reroll` (small text link, gray, no styling — and only shown for free if no character has been created yet; this is intentional friction-free for first-time users) — picks again
-- `Continue` (primary amber) — proceeds to step 5
+- `Continue` (primary Cloud Blue) — proceeds to step 5
 
 This moment carries narrative weight. Don't rush it.
 
@@ -816,7 +811,7 @@ Below those, a link in tiny text: "How to get an Anthropic API key →" pointing
 
 Buttons:
 - `Back`
-- `Validate and Enter the City` (primary amber)
+- `Validate and Enter the City` (primary Cloud Blue)
 
 On submit:
 1. Frontend calls a Supabase Edge Function `validate-and-create-character`, passing all the character data + the API key.
@@ -872,12 +867,12 @@ Access control:
   for one where user_id = auth.uid()). If they do, redirect to /character.
 
 Visual style: same dark mode dystopian-industrial palette as other pages.
-Background #0a0a0b, surfaces #16171a, off-white text #e8e8e8, amber accent
-#c19a4b, slab-serif headings, sans-serif body.
+Background #0a0a0b, surfaces #16171a, off-white text #e8e8e8, Cloud Blue accent
+#c19a4b,  headings, sans-serif body.
 
 Top of every step:
 - A persistent header strip showing "Step {N} of 5 — {Step Name}"
-  with a thin amber progress bar that fills proportionally underneath.
+  with a thin Cloud Blue progress bar that fills proportionally underneath.
 
 Bottom of every step:
 - A persistent footer strip with "Back" on the left (disabled on step 1)
@@ -896,7 +891,7 @@ STEP 1 — IDENTITY
       who they are."
     - Core traits (textarea, max 50 words, live word count visible).
       Prompt: "Who are they at their core? Describe their temperament
-      and outlook." Hint in smaller gray italic: "e.g. 'Quiet. Watchful.
+      and outlook." Hint in smaller gray : "e.g. 'Quiet. Watchful.
       Trusts slowly. Speaks in short sentences and is uncomfortable when
       others won't.'"
     - Values (textarea, max 30 words, live count). Prompt: "What matters
@@ -914,12 +909,12 @@ STEP 2 — FACTION
   count.
 - Render a 2-column grid (1 column on mobile) of faction cards.
 - Each card: 4px left border in factions.color_hex, faction name in
-  slab-serif, ideology in amber small text, description in gray below,
+  , ideology in Cloud Blue small text, description in gray below,
   population count "{N} citizens" in the bottom right, normally gray,
   but if active population > 20 AND this faction's count > 1.4 * the
   smallest faction's count, render the count in red.
 - Click a card to select it. Only one selectable. Selected card has
-  solid amber border and slight surface tint.
+  solid Cloud Blue border and slight surface tint.
 - Continue disabled until a faction is selected.
 - When the user clicks Continue, check the recommendation condition:
     - Total active characters > 20 AND
@@ -940,7 +935,7 @@ STEP 3 — SKILLS
 - Fetch all 18 skills from the skills table.
 - Render a grid of skill chips, 3 columns on desktop, 2 on mobile.
 - Each chip: skill name in bold, description in small gray text below.
-- Click toggles selection. Selected chips have amber border and amber
+- Click toggles selection. Selected chips have Cloud Blue border and Cloud Blue
   surface tint.
 - Above the grid, a counter "{N} / 5 selected".
 - Below the grid, small gray text: "Skills don't have to fit your
@@ -956,11 +951,11 @@ STEP 4 — CONFIRMATION AND SUB-GROUP REVEAL
     - Three personality blocks labeled "Core traits", "Values", "Flaw or
       fear" with the user's text below each
     - Selected faction with its color bar and name
-    - Sub-group placeholder line in italic gray: "The city will decide
+    - Sub-group placeholder line in gray: "The city will decide
       your role inside the {Faction Name}."
     - Five skill chips horizontally
 - Bottom buttons: "Back" (left) and "Receive your assignment" (right,
-  primary amber).
+  primary Cloud Blue).
 - When "Receive your assignment" is clicked:
     - Disable the button.
     - Show a 1 second "Assigning..." state.
@@ -968,10 +963,10 @@ STEP 4 — CONFIRMATION AND SUB-GROUP REVEAL
       (query subgroups where faction_id = selected).
     - Replace the placeholder line with a fade-in:
         Bold: "The city has placed you."
-        Italic: "You are a {subgroup name} of the {faction name} —
+        Thinner: "You are a {subgroup name} of the {faction name} —
           {subgroup description}."
     - Change bottom buttons to: small gray "Reroll" text link on the
-      left and primary amber "Continue" on the right.
+      left and primary Cloud Blue "Continue" on the right.
     - "Reroll" picks a different sub-group at random and re-runs the
       reveal. (No backend cost; this is client-side.)
 
@@ -988,7 +983,7 @@ STEP 5 — API KEY
 - Below those: a small link "How to get an Anthropic API key →" that
   opens https://console.anthropic.com/settings/keys in a new tab.
 - Bottom buttons: "Back" and "Validate and Enter the City" (primary
-  amber).
+  Cloud Blue).
 - On submit:
     - Call a Supabase Edge Function named "validate-and-create-character"
       with the full character data and the API key in the request body.
