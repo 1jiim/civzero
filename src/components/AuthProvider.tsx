@@ -29,15 +29,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const supabase = createClient()
 
     async function fetchCharacter(userId: string) {
-      // TEMPORARY LOGGING — remove before commit
-      console.log('[AuthProvider] fetchCharacter starting for userId:', userId)
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('characters')
         .select('*')
         .eq('user_id', userId)
         .maybeSingle()
-      // TEMPORARY LOGGING — remove before commit
-      console.log('[AuthProvider] fetchCharacter result — data:', data, '| error:', error ?? 'none')
       // @supabase/ssr doesn't fully propagate Database generics through the query builder;
       // cast to the known Row type explicitly.
       const character = data as Character | null
@@ -49,13 +45,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // getSession() reads localStorage/cookies without a network round-trip, so it
     // resolves even when the Supabase project is unreachable. onAuthStateChange alone
     // is not reliable here because it waits for an internal async check before firing.
+    // fetchCharacter is fire-and-forget: setLoading(false) must not wait for the DB
+    // query so that the nav resolves promptly even when the database is slow.
     async function initSession() {
       try {
         const { data: { session } } = await supabase.auth.getSession()
         const currentUser = session?.user ?? null
         setUser(currentUser)
         if (currentUser) {
-          await fetchCharacter(currentUser.id)
+          fetchCharacter(currentUser.id)
         }
       } finally {
         setLoading(false)
@@ -65,15 +63,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Phase 2 — subscribe to live auth events (sign-in, sign-out, token refresh).
     // loading is already resolved by initSession; don't touch it here.
+    //
+    // IMPORTANT: fetchCharacter is fire-and-forget (no await). GoTrueClient awaits
+    // every onAuthStateChange callback before resolving signInWithPassword — if this
+    // callback is async and awaits a DB query, signInWithPassword will hang until the
+    // query completes. Code that needs accurate post-signin character status must do
+    // its own direct query instead of reading hasCharacter/characterName from context.
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      // TEMPORARY LOGGING — remove before commit
-      console.log('[AuthProvider] onAuthStateChange fired — event:', _event, '| userId:', session?.user?.id ?? 'null')
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       const currentUser = session?.user ?? null
       setUser(currentUser)
       if (currentUser) {
-        await fetchCharacter(currentUser.id)
+        fetchCharacter(currentUser.id)
       } else {
         setHasCharacter(false)
         setCharacterName(null)

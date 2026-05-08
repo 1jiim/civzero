@@ -35,9 +35,11 @@ of truth. Do not invent new design choices — surface the question to the user.
 - **Edge Functions:** Deno + TypeScript
 - **Deployment target:** Vercel for frontend, Supabase for everything else
 - **AI integration:** Anthropic API (each user's character runs on the user's own key)
-- **Next.js version:** 16.x (uses `proxy.ts` instead of the legacy
-  `middleware.ts`. Both files do the same thing — proxy is the new name.
-  Don't rename it back.)
+- **Next.js version:** 16.x (uses `proxy.ts` with `export function proxy(...)`.
+  Next.js 16.x renamed the middleware file convention from `middleware.ts` to
+  `proxy.ts` and the export from `middleware` to `proxy`. Using `middleware.ts`
+  still works but triggers a deprecation warning. Do not rename `proxy.ts` back
+  to `middleware.ts`.
 
 ## Visual style — non-negotiable, adhere strictly to the following design philosophy 
 
@@ -56,10 +58,12 @@ of truth. Do not invent new design choices — surface the question to the user.
 - `app/` — Next.js App Router pages.
 - `app/(public)/` — public routes: `/`, `/world`, `/signin`, `/signup`, `/verify-email`.
   `app/(public)/` is a route group for organization only. No per-group layout — the root layout handles nav, footer, and providers for everything.
-- `app/auth/confirm/` — Route Handler (`route.ts`) for Supabase email verification. Receives
-  `?token_hash=...&type=signup&next=/character/create` from the confirmation email link, calls
-  `supabase.auth.verifyOtp()` server-side to set the session cookie, then redirects to `next`.
-  Do not remove — this is the required `@supabase/ssr` email confirmation pattern. The
+- `app/auth/confirm/` — Route Handler (`route.ts`) for Supabase email verification.
+  `@supabase/ssr` hardcodes `flowType: "pkce"`. After Supabase verifies the OTP and
+  confirms the email, it redirects here with `?code=<PKCE_CODE>&next=/character/create`.
+  The handler calls `supabase.auth.exchangeCodeForSession(code)` to exchange the PKCE
+  code for a session and write the session cookies, then redirects to `next`.
+  Do not remove — this is the required PKCE email confirmation pattern. The
   `emailRedirectTo` option in `signUp()` and `resend()` must point here.
 - `app/character/` — authenticated routes: `/character/create` and (later) `/character`.
 - `components/` — reusable React components.

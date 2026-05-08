@@ -16,13 +16,10 @@ export default function SignInPage() {
     e.preventDefault()
     setError(null)
     setSubmitting(true)
-    console.log('[signin] handleSubmit started')
 
     try {
       const supabase = createClient()
-      console.log('[signin] calling signInWithPassword...')
       const { error: authError, data } = await supabase.auth.signInWithPassword({ email, password })
-      console.log('[signin] signInWithPassword returned — error:', authError?.message ?? 'none', '| session:', data.session ? 'present' : 'null', '| user:', data.user?.id ?? 'null')
 
       if (authError) {
         setError(authError.message)
@@ -34,14 +31,11 @@ export default function SignInPage() {
         return
       }
 
-      console.log('[signin] calling router.push /character/create')
       // TODO: once Phase 9 (character dashboard) is built, query characters here and
       // redirect to /character if one exists, /character/create if not.
       router.push('/character/create')
-      console.log('[signin] router.push called')
     } finally {
       setSubmitting(false)
-      console.log('[signin] setSubmitting(false) called')
     }
   }
 
